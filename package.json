@@ -1,0 +1,12 @@
+{
+  "name": "aresig",
+  "version": "1.0.0",
+  "description": "John Resig microtemplate with promises",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/westtrade/aresig",
+    "type": "git"
+  },
+  "author": "Popov Gennadiy <me@westtrade.tk>",
+  "license": "MIT"
+}
