@@ -8,5 +8,11 @@
     "type": "git"
   },
   "author": "Popov Gennadiy <me@westtrade.tk>",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "ava": "^0.17.0"
+  },
+  "scripts" : {
+	  "test" : "ava"
+  }
 }
