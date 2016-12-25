@@ -118,7 +118,8 @@ const compile = (str, data = {}) => {
 	const compiler = new Compiler();
 	let preparedString = str.split(TOKENS)
 	let template = preparedString.reduce((c, chunk) => c.write(chunk), compiler).render();
-	return new Function('data', template);
+	let AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
+	return new AsyncFunction('data', template);
 };
 
 module.exports = compile;
