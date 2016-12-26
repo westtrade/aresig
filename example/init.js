@@ -7,15 +7,14 @@ const timeout = new Promise((resolve) => setTimeout(() => resolve('Test'), 1500)
 
 async function main () {
 
-	const tplString = `<%
-
-	let test = await data.getData()
-
-
-
-
-
-%><%= test %>`;
+	const tplString =`
+	<%= 1 %>
+	<% let test = await data.getData() %>
+	<%= 2 %>
+	<% test = await data.getData() %>
+	<%= 3 %>
+	<% test = await data.getData() %>
+	`;
 
 	let template = compile(tplString);
 	const data = {
@@ -31,7 +30,8 @@ async function main () {
 	//
 	const result = await template(data);
 
-	console.log(result);
+	console.log(result.split('\n').length);
+	console.log("'" + result + "'");
 }
 
 main();

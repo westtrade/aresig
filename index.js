@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-
 const SEPARATOR = {
 	start: '<%',
 	stop: '%>',
@@ -93,9 +92,8 @@ class Compiler {
 			if ((!hasOpen && !hasClose) || hasClose) {
 				this.ready = true;
 			}
+
 			this.content.push(prefix + chunk.trim());
-
-
 			break;
 
 		}
@@ -104,9 +102,7 @@ class Compiler {
 	}
 
 	render() {
-
 		this.content.push(`return Promise.all(body).then(data => data.join(''));`)
-
 		return [`let body = [];`, ...this.content].join('\n');
 	}
 }
@@ -116,9 +112,18 @@ class Compiler {
 const compile = (str, data = {}) => {
 
 	const compiler = new Compiler();
-	let preparedString = str.split(TOKENS)
-	let template = preparedString.reduce((c, chunk) => c.write(chunk), compiler).render();
-	let AsyncFunction = Object.getPrototypeOf(async function(){}).constructor;
+	let preparedString = str
+		.replace(/(%>)[\s]+?(<%[=])/g, '$1$2')
+		.trimRight() + '\n'
+		;
+
+
+	let template = preparedString
+		.split(TOKENS)
+		.reduce((c, chunk) => c.write(chunk), compiler)
+		.render();
+
+	let AsyncFunction = Object.getPrototypeOf(async () => {}).constructor;
 	return new AsyncFunction('data', template);
 };
 
