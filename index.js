@@ -113,8 +113,8 @@ const compile = (str, data = {}) => {
 
 	const compiler = new Compiler();
 	let preparedString = str
+		.replace(/(%>)[\s]+?(<%[^=])/gm, '$1$2')
 		.replace(/[ \t]+?(<%[^=][\s\S]+?%>)[\n]/gm, '$1')
-		.trimRight()
 		;
 
 	let template = preparedString

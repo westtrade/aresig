@@ -19,7 +19,7 @@ async function main () {
 	<% containers.forEach(({info}) => { %>
 		<% if (info.Id === '2b891592675bae291a85a7636556b450ecdcfcd53705043206cb58a07aef8d4e') { %>
 <%= JSON.stringify(info) %>
-===========================
+			===========================
 		<% } %>
 	<% })  %>
 
@@ -74,7 +74,7 @@ async function main () {
 	const result = await template(data);
 
 	// console.log(result.split('\n').length);
-	console.log("'" + result + "'");
+	console.log("'" + result.replace(/\t/gm, '\\t').replace(/[ ]/gm, '.') + "'");
 }
 
 main();
