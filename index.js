@@ -113,8 +113,8 @@ const compile = (str, data = {}) => {
 
 	const compiler = new Compiler();
 	let preparedString = str
-		.replace(/(%>)[\s]+?(<%[=])/g, '$1$2')
-		.trimRight() + '\n'
+		.replace(/^[\s]+?(<%[^=][\s\S]+?%>)[\n]/gm, '$1')
+		.trimRight()
 		;
 
 
