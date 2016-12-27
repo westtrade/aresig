@@ -113,10 +113,9 @@ const compile = (str, data = {}) => {
 
 	const compiler = new Compiler();
 	let preparedString = str
-		.replace(/^[\s]+?(<%[^=][\s\S]+?%>)[\n]/gm, '$1')
+		.replace(/[ \t]+?(<%[^=][\s\S]+?%>)[\n]/gm, '$1')
 		.trimRight()
 		;
-
 
 	let template = preparedString
 		.split(TOKENS)

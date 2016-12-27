@@ -1,6 +1,6 @@
 {
   "name": "aresig",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "John Resig microtemplate with promises",
   "main": "index.js",
   "repository": {
