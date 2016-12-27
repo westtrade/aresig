@@ -1,1 +1,1 @@
-- [ ] Fix errors in templates
+- [ ] Fix error messages in templates
